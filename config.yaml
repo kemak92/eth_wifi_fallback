@@ -1,0 +1,65 @@
+esphome:
+  name: "esp32-eth-wifi-fallback"
+  friendly_name: ESP32 Ethernet WiFi Fallback
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+external_components:
+  - source: github://kemak92/eth_wifi_fallback@main
+    components: [eth_wifi_fallback]
+    refresh: 0s
+
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk:
+    pin: GPIO17
+    mode: CLK_OUT
+  phy_addr: 0
+  manual_ip:
+    static_ip: 192.168.1.150
+    gateway: 192.168.1.1
+    subnet: 255.255.255.0
+    dns1: 192.168.1.1
+    dns2: 8.8.8.8
+
+eth_wifi_fallback:
+  ssid: "WIFI"
+  password: "REDACTED"
+  check_interval: 15s
+  manual_ip:                    # ← eth_wifi_fallback
+    static_ip: 192.168.1.150    # ← cùng IP với Ethernet
+    gateway: 192.168.1.1
+    subnet: 255.255.255.0
+    dns1: 192.168.1.1
+
+logger:
+  level: INFO
+
+api:
+  encryption:
+    key: "REDACTED"
+  reboot_timeout: 0s            # tránh reboot khi HA mất kết nối lúc chuyển mạng
+
+ota:
+  - platform: esphome
+    password: "REDACTED"
+
+web_server:
+  port: 80
+
+text_sensor:
+  - platform: ethernet_info
+    ip_address:
+      name: "IP Address (Ethernet)"
+    mac_address:
+      name: "MAC Address"
+
+sensor:
+  - platform: uptime
+    name: "Uptime"
+    update_interval: 60s
