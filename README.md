@@ -21,7 +21,7 @@ Tested on **HEUNGELECTRIC** ESP32 + LAN8720 board.
 ---
 
 ## Usage
-
+[![Donate với PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/kemak92)
 ```yaml
 external_components:
   - source: github://kemak92/eth_wifi_fallback@main
