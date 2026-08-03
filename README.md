@@ -1,3 +1,4 @@
+[![Sponsor this project](https://img.shields.io/badge/Sponsor_this_project-PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.me/kemak92)
 ```markdown
 # eth_wifi_fallback
 
@@ -54,7 +55,6 @@ eth_wifi_fallback:
 
 ---
 ```
-[![Donate với PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/kemak92)
 ---
 ## Options
 
